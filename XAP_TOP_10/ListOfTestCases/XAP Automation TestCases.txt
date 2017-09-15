@@ -1,0 +1,10 @@
+TC01_Apply_Leave
+TC02_GetNotifications
+TC03_GetAttendance
+TC04_GetKRAByPassingYear&Quater
+TC05_Cancel_Leave
+TC06_GetAllEmployee_Details
+TC07_GetLoginHours_ForAWeek
+TC08_GetLoginHours_ForADate
+TC09_Add_ToDoList
+TC10_GetAllLeaves_WithCategoryType
