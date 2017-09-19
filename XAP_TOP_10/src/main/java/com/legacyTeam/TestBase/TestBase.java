@@ -7,16 +7,17 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import org.openqa.selenium.Platform;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
+
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.asserts.SoftAssert;
 
-import com.learning.uiautomation.BhanuClasses.excelReader.Xls_Reader;
+import com.leagacyTeam.readExcel.Xls_Reader;
+
+
 
 public class TestBase {
 	public static final Logger log = Logger.getLogger(TestBase.class.getName());

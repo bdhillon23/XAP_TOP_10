@@ -28,7 +28,7 @@ public class Xls_Reader {
 	private XSSFWorkbook workbook = null;
 	private XSSFSheet sheet = null;
 	private XSSFRow row   =null;
-	private XSSFCell cell = null;
+	private XSSFCell cell = null; 
 	
 	public Xls_Reader(String path) {
 		
