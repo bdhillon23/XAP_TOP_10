@@ -1,0 +1,6 @@
+2017-07-24 16:38:24 0 TestBase - Navigating to the URL : http://automationpractice.com/index.php
+2017-07-24 16:38:24 2 TC001_VerifyLoginWithInvalidCredentials - *******Starting the Test***********
+2017-07-24 16:38:24 2202 HomePage - Clicking on the sign in btn [[FirefoxDriver: Firefox on XP (41b3b31a-e1f7-43ad-a3fd-e03bbaa1210c)] -> xpath: .//*[@id='header']/div[2]/div/div/nav/div[1]/a]
+2017-07-24 16:38:24 4541 HomePage - Entering the username balvinder.dh23@gmail.com in the field 
+2017-07-24 16:38:24 4586 HomePage - Entering the password in the field 
+2017-07-24 16:38:24 6016 TC001_VerifyLoginWithInvalidCredentials - *******Finishing the Test***********

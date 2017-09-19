@@ -15,6 +15,11 @@
     <artifactId>selenium-java</artifactId>
     <version>3.4.0</version>
 </dependency>
-  
+  <!-- pom.xml -->
+<dependency>
+    <groupId>com.aventstack</groupId>
+    <artifactId>extentreports</artifactId>
+    <version>3.0.7</version>
+</dependency>
   </dependencies>
 </project>
