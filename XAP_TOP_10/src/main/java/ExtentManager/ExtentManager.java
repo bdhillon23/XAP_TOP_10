@@ -22,8 +22,7 @@ public class ExtentManager {
 	public static ExtentReports getInstance(){
 		if(extent==null){
 		
-		HtmlReporter=new ExtentHtmlReporter("D://Workspace//LearningAutomation//Reports//MyOwnReport.html");
-		
+		HtmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"//Report//MyOwnReport.html");
 		
 		HtmlReporter.config().setChartVisibilityOnOpen(true);
 		HtmlReporter.config().setReportName("Balwinder Report");
@@ -36,7 +35,7 @@ public class ExtentManager {
 		extent.attachReporter(HtmlReporter);
 		return extent;
 		}
-		System.out.println("Hello");
+		
 		return extent;
 	
 	}

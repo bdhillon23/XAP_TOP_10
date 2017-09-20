@@ -7,25 +7,28 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.asserts.SoftAssert;
 
+import ExtentManager.ExtentManager;
+
+import com.aventstack.extentreports.ExtentReports;
 import com.leagacyTeam.readExcel.Xls_Reader;
 
 
 
 public class TestBase {
-	public static final Logger log = Logger.getLogger(TestBase.class.getName());
+	public final Logger log = Logger.getLogger(TestBase.class.getName());
 	public WebDriver driver;
 	public DesiredCapabilities cap;
 	public SoftAssert asrt = new SoftAssert();
 	public Xls_Reader reader;
-	public static Properties prop;
+	public Properties prop;
+	public ExtentReports extent=ExtentManager.getInstance();;
+	
 
 	public void init() {
 		try {
@@ -37,10 +40,9 @@ public class TestBase {
 			prop.load(fsm);
 			fsm.close();
 			String log4jconfig = "log4j.properties";
-			reader = new Xls_Reader(
-					System.getProperty("user.dir")
-							+ "//src//main//java//com//learning//uiautomation//BhanuClasses//data//TestData.xlsx");
+			reader = new Xls_Reader(System.getProperty("user.dir")+ "\\TestData.xlsx");
 			PropertyConfigurator.configure(log4jconfig);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -54,8 +56,9 @@ public class TestBase {
 			
 	
 			System.setProperty("webdriver.chrome.driver",
-					System.getProperty("user.dir")
-							+ "/Drivers//chromedriver.exe");
+			System.getProperty("user.dir")	+"\\Drviers\\chromedriver.exe");
+			
+		
 			log.info("Creating obejct of browser " + Browser);
 			driver = new ChromeDriver();
 			driver.manage().window().maximize();
@@ -65,7 +68,7 @@ public class TestBase {
 		else if(Browser.equalsIgnoreCase("firefox")){
 			//cap= DesiredCapabilities.firefox();
 			
-			System.setProperty("webdriver.gecko.driver", "C:\\Users\\balwinder\\git\\bhanuRepo\\BhanuClasses\\Drivers\\geckodriver.exe");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")	+"\\Drviers\\geckodriver.exe");
 			
 			driver = new FirefoxDriver() ;
 		}
