@@ -1,9 +1,9 @@
 package com.legacyTest.test;
 
-import org.testng.annotations.AfterSuite;
+
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentTest;
@@ -15,23 +15,26 @@ public class TestClass extends TestBase{
 	@Test
 	public void LaunchBrowser(){
 		logger=extent.createTest("LaunchBrowser");
-		selectBrowser("firefox");
+		selectBrowser("Chrome");
 		logger.info("Starting the test case");
 		driver.get("http://google.com");
-	
+		
 	}
-	@AfterTest
+	@AfterMethod
 	public void quite(){
+	
 		if(extent!=null){
-			System.out.println("Flushing");
+			
 			
 			extent.flush();
-			driver.close();
+			driver.quit();
+			
 		}
 	
 		}
 	@BeforeSuite
 	public void init(){
+		
 		if(prop==null){
 			TestBase tb=new TestBase();
 			tb.init();
