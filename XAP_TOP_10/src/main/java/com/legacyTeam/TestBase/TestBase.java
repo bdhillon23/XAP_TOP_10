@@ -40,7 +40,7 @@ public class TestBase {
 			prop.load(fsm);
 			fsm.close();
 			String log4jconfig = "log4j.properties";
-			reader = new Xls_Reader(System.getProperty("user.dir")+ "\\TestData.xlsx");
+			reader = new Xls_Reader(System.getProperty("user.dir")+ "\\src\\main\\java\\com\\legacyTeam\\testDataFile\\TestData.xlsx");
 			PropertyConfigurator.configure(log4jconfig);
 			
 		} catch (Exception e) {
@@ -78,5 +78,9 @@ public class TestBase {
 		driver.get(URL);
 		log.info("Navigating to the URL : " + URL);
 		
+	}
+	public void start(String Browser ,String URL){
+		selectBrowser(Browser);
+		getURL(URL);
 	}
 }
