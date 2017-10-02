@@ -8,8 +8,10 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.asserts.SoftAssert;
 
@@ -82,5 +84,10 @@ public class TestBase {
 	public void start(String Browser ,String URL){
 		selectBrowser(Browser);
 		getURL(URL);
+	}
+	public void action(WebElement e){
+		Actions act=new Actions(driver);
+		act.moveToElement(e).build().perform();
+		
 	}
 }

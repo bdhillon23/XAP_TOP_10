@@ -40,6 +40,11 @@ public class TestClass extends TestBase{
 		}
 		notificationPanel notification=new notificationPanel(driver);
 		notification.getNotification();
+		
+		boolean validateLogOut=lp.logout();
+		asrt.assertEquals(validateLogOut,true);
+		
+		
 	}
 	@AfterMethod
 	public void quite(){

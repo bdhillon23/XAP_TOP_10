@@ -2,9 +2,11 @@ package com.legacyTeam.loginPage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.log4testng.Logger;
+
 import com.aventstack.extentreports.ExtentTest;
 import com.legacyTeam.TestBase.TestBase;
 
@@ -25,6 +27,11 @@ public class loginPage {
 	@FindBy(id="divAttendaceDetails")
 	WebElement validatelogin;
 	
+	@FindBy(css="li.dropdown.dropdown-user")
+	WebElement profiledropDown;
+	
+	@FindBy(css="li.dropdown.dropdown-user>ul>li:nth-child(3)")
+	WebElement logOutBtn;
 	
 	
 	public void login(String username,String password){
@@ -43,7 +50,18 @@ public class loginPage {
 	}
 	
 	public loginPage(WebDriver driver){
-		PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver,this);
+		this.driver=driver;
 	}
+	
+	public boolean logout(){
+		Actions act=new Actions(driver);
+		act.moveToElement(profiledropDown);
+		
+		act.moveToElement(logOutBtn).click().build().perform();
+		
+		return loginField.isDisplayed();
+	}
+	
 	
 }
