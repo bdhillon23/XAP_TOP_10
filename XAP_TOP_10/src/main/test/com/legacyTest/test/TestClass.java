@@ -1,22 +1,24 @@
 package com.legacyTest.test;
 
 
-import junit.framework.Assert;
 
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
+import org.testng.Assert;
+import org.testng.AssertJUnit;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeSuite;
 
-import com.aventstack.extentreports.ExtentTest;
-import com.gargoylesoftware.htmlunit.javascript.host.Notification;
+
+
+import org.testng.annotations.BeforeTest;
+
 import com.legacyTeam.TestBase.TestBase;
 import com.legacyTeam.dashboard.notificationPanel;
 import com.legacyTeam.loginPage.loginPage;
 
 public class TestClass extends TestBase{
-	public ExtentTest logger;
-	@SuppressWarnings("deprecation")
+	
+	
 	public static Assert asrt;
 	
 	@Test
@@ -24,25 +26,31 @@ public class TestClass extends TestBase{
 		logger=extent.createTest("LaunchBrowser");
 		
 		logger.info("Starting test case");
-		String URL="https://intranet.xavient.com";
-	    start("Chrome", URL);
+		
 		loginPage lp=new loginPage(driver);
-		lp.login("balwinder", "");
+		lp.login("balwinder", "Xavient@1");
 		String text=lp.validateLogin();
+		
 		if(text.contains("Success")){
-		asrt.assertEquals(text, "Login Successfully");
+		AssertJUnit.assertEquals(text, "Login Successfully");
 		logger.pass("login Successfull");
 		
 		}
 		else{
-			asrt.fail();
-			logger.fail("Login Failed");
-		}
+			Assert.fail();
+			Assert.fail("Login Failed");
+		}	
+	
+		
+		
+	
 		notificationPanel notification=new notificationPanel(driver);
 		notification.getNotification();
 		
+	
+		
 		boolean validateLogOut=lp.logout();
-		asrt.assertEquals(validateLogOut,true);
+		AssertJUnit.assertEquals(validateLogOut,true);
 		
 		
 	}
