@@ -2,6 +2,7 @@ package com.legacyTeam.TestBase;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,7 +38,7 @@ public class TestBase {
 	public Xls_Reader reader;
 	public Properties prop;
 	public ExtentReports extent=ExtentManager.getInstance();
-	public ExtentTest logger;
+	public static ExtentTest logger;
 	
 
 	public  void init() {
@@ -116,7 +117,7 @@ public class TestBase {
 				FileUtils.copyFile(src, new File(path));
 				logger.addScreenCaptureFromPath(path);
 			}
-			catch(Exception e){
+			catch(IOException e){
 				System.out.println(e.getMessage()+" Exception while taking screenshot");
 			}
 			

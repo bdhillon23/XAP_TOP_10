@@ -5,7 +5,6 @@ package com.leagacyTeam.Listener;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-
 import com.aventstack.extentreports.Status;
 import com.legacyTeam.TestBase.TestBase;
 
@@ -22,7 +21,7 @@ public class Listener extends TestBase implements ITestListener{
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 

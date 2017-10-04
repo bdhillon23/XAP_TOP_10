@@ -23,16 +23,17 @@ public class TestClass extends TestBase{
 	
 	@Test
 	public void LaunchBrowser(){
+		System.out.println("Hi ");
 		logger=extent.createTest("LaunchBrowser");
 		
 		logger.info("Starting test case");
 		
 		loginPage lp=new loginPage(driver);
-		lp.login("balwinder", "Xavient@1");
+		lp.login("balwinder", "Xavient");
 		String text=lp.validateLogin();
 		
 		if(text.contains("Success")){
-		AssertJUnit.assertEquals(text, "Login Successfully");
+		asrt.assertEquals(text, "Login Successfully");
 		logger.pass("login Successfull");
 		
 		}
@@ -41,9 +42,7 @@ public class TestClass extends TestBase{
 			Assert.fail("Login Failed");
 		}	
 	
-		
-		
-	
+			
 		notificationPanel notification=new notificationPanel(driver);
 		notification.getNotification();
 		
