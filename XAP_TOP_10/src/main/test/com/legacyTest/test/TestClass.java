@@ -23,13 +23,13 @@ public class TestClass extends TestBase{
 	
 	@Test
 	public void LaunchBrowser(){
-		System.out.println("Hi ");
+		
 		logger=extent.createTest("LaunchBrowser");
 		
 		logger.info("Starting test case");
 		
 		loginPage lp=new loginPage(driver);
-		lp.login("balwinder", "Xavient");
+		lp.login("balwinder", "Xavient@2");
 		String text=lp.validateLogin();
 		
 		if(text.contains("Success")){

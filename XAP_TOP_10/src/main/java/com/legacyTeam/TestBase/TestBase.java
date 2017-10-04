@@ -12,6 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -20,12 +22,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.asserts.SoftAssert;
 
 import ExtentManager.ExtentManager;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.google.common.base.Function;
 import com.leagacyTeam.readExcel.Xls_Reader;
 
 
@@ -36,7 +42,7 @@ public class TestBase {
 	public DesiredCapabilities cap;
 	public SoftAssert asrt = new SoftAssert();
 	public Xls_Reader reader;
-	public Properties prop;
+	public  static Properties prop;
 	public ExtentReports extent=ExtentManager.getInstance();
 	public static ExtentTest logger;
 	
@@ -96,11 +102,15 @@ public class TestBase {
 		selectBrowser(Browser);
 		getURL(URL);
 	}
+		
+		//******************************Action**********************************************//		
 		public void action(WebElement e){
 		Actions act=new Actions(driver);
 		act.moveToElement(e).build().perform();
 		
 	}	
+		
+		//******************************TakeScreenShot**********************************************//		
 		public void  TakeScreenshot(){
 			
 			Date d=new Date();
@@ -123,10 +133,62 @@ public class TestBase {
 			
 			
 		}
-	
-	
-	
-	
+//******************************FluentWait**********************************************//	
+	public static void fluentWait(String elementLocator){
+		final String elementLocatorKey=elementLocator;
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+			       .withTimeout(30, TimeUnit.SECONDS)
+			       .pollingEvery(2, TimeUnit.SECONDS)
+			       .ignoring(NoSuchElementException.class);
+			 
+			   WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
+			     public WebElement apply(WebDriver driver) {
+			       return getElement(elementLocatorKey);
+			     }
+			   });
+	}
+//******************************GetElement**********************************************//	
+	public static WebElement getElement(String elementLocator){
+		WebElement element = null;
+		
+		if(elementLocator.contains("_xpath")){
+			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
+			element=driver.findElement(By.xpath(prop.getProperty(elementLocator)));
+			return element;
+		}
+		else if(elementLocator.contains("_id")){
+			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
+			element=driver.findElement(By.id(prop.getProperty(elementLocator)));
+			return element;
+		}
+		else if(elementLocator.contains("_css")){
+			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
+			element=driver.findElement(By.cssSelector(prop.getProperty(elementLocator)));
+			return element;
+		}
+		else if(elementLocator.contains("_linktext")){
+			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
+			element=driver.findElement(By.linkText(prop.getProperty(elementLocator)));
+			return element;
+		}
+		else if(elementLocator.contains("_className")){
+			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
+			element=driver.findElement(By.className(prop.getProperty(elementLocator)));
+			return element;
+		}
+		else if(elementLocator.contains("_tagName")){
+			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
+			element=driver.findElement(By.tagName(prop.getProperty(elementLocator)));
+			return element;
+		}
+		else if(elementLocator.contains("_name")){
+			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
+			element=driver.findElement(By.name(prop.getProperty(elementLocator)));
+			return element;
+		}
+		
+	return element;
+	}
 	
 	
 }

@@ -16,8 +16,7 @@ public class notificationPanel extends TestBase{
 	
 	@FindBy(xpath="id('divNotification')/ul[1]/li[1]/div[1]/div[1]/div[2]/div[1]")
 	WebElement notificationBox;
-	
-	
+			
 	String part1="id('divNotification')/ul[1]/li[";
 	String part2="]";
 	

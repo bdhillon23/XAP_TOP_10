@@ -27,7 +27,7 @@ public class Listener extends TestBase implements ITestListener{
 
 	public void onTestFailure(ITestResult result) {
 		if(result.getStatus()==ITestResult.FAILURE){
-			TakeScreenshot();
+
 			logger.log(Status.FAIL, "This test cases is failed");
 		}
 		
