@@ -190,5 +190,15 @@ public class TestBase {
 	return element;
 	}
 	
+//***********************************waitInSec******************************************************//
 	
+	public static void waitinSec(int timeinSec){
+		try {
+			logger.log(Status.INFO, "Driver is waiting for : "+timeinSec +" Seconds");
+			Thread.sleep(timeinSec*1000);
+		} catch (InterruptedException e) {
+			
+			e.printStackTrace();
+		}
+	}
 }
