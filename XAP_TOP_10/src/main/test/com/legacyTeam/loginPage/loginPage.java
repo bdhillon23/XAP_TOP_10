@@ -14,7 +14,7 @@ import com.legacyTeam.TestBase.TestBase;
 
 public class loginPage extends TestBase{
 	public static final Logger log=Logger.getLogger(loginPage.class);
-	public ExtentTest logger;
+	//public ExtentTest logger;
 	WebDriver driver;
 	
 	@FindBy(id="txtLoginName")
@@ -61,11 +61,14 @@ public class loginPage extends TestBase{
 	public boolean logout(){
 		Actions act=new Actions(driver);
 		fluentWait(("profiledropDownKey_css"));
+		waitinSec(2);
+		TakeScreenshot();
 		act.moveToElement(profiledropDown);
 		act.moveToElement(logOutBtn).click().build().perform();
 		
 		fluentWait("loginfield_id");
 		logger.log(Status.INFO, "Logout Successfull");
+		waitinSec(2);
 		TakeScreenshot();
 		return loginField.isDisplayed();
 	}
