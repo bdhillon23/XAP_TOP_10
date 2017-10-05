@@ -29,7 +29,7 @@ public class TestClass extends TestBase{
 		logger.info("Starting test case");
 		
 		loginPage lp=new loginPage(driver);
-		lp.login("balwinder", "");
+		lp.login("balwinder", "Xavient@2");
 		String text=lp.validateLogin();
 		
 		if(text.contains("Success")){
@@ -49,7 +49,10 @@ public class TestClass extends TestBase{
 	
 		
 		boolean validateLogOut=lp.logout();
-		AssertJUnit.assertEquals(validateLogOut,true);
+		if(validateLogOut==true){
+		logger.pass("Logout successfull");	
+		}
+		asrt.assertEquals(validateLogOut, true);
 		
 		
 	}
