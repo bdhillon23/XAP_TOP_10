@@ -39,11 +39,12 @@ public class loginPage extends TestBase{
 	
 	
 	public void login(String username,String password){
-		
+	
 		loginField.sendKeys(username);
 		passwordField.sendKeys(password);
 		loginBtn.click();
 		log.info("CLicked on the login button");
+	
 		
 	}
 	public String validateLogin(){

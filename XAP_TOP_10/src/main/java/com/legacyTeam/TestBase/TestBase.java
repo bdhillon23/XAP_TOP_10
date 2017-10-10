@@ -213,4 +213,22 @@ public class TestBase {
 			e.printStackTrace();
 		}
 	}
+	
+	
+//******************************************WaitforLoad************************************************//
+	public  boolean pageReady(){
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		String state=(String) js.executeScript("return document.readyState" );
+		if(state.equalsIgnoreCase("Complete")){
+			return true;
+		}else
+		{
+			pageReady();
+		}
+		return false;
+	}
+	
+	
+	
+	
 }

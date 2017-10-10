@@ -18,11 +18,9 @@ public class NavigateTo extends TestBase{
 
 	@FindBy(xpath="id('sidebar')/li")
 	WebElement sidebar;
-	
-	
-	
+	 
 	public void Navigateto(String titleName,String firstLevelValue,String secondLevelValue){
-	
+		
 		ArrayList<Integer> NavigateValues=new ArrayList();
 		NavigateValues.add(1);
 		NavigateValues.add(2);
@@ -49,17 +47,17 @@ public class NavigateTo extends TestBase{
 				String xpathf=xpathForSidebar+"/ul/li";
 				List<WebElement> wb=driver.findElements(By.xpath(xpathf));
 				for(int j=0;j<wb.size();j++){
-					//String xpathf1="["+j+"]";
-					//System.out.println(wb.get(j));
+					
 						String e1=wb.get(j).getText();
-						//System.out.println("This is the value of e1 : " +e1);
+						
 						if(firstLevelValue.equalsIgnoreCase(e1)){
 							waitinSec(1);
 							wb.get(j).click();
 							
 							if(secondLevelValue!=(""))
 							{
-								logger.info("The Value of id for :" +firstLevelValue +"its id is : "+wb.get(j).getAttribute("id"));
+							logger.info("The Value of id for :" +firstLevelValue +"its id is : "+wb.get(j).getAttribute("id"));
+							waitinSec(1);
 							String FirstLevelValue_id=wb.get(j).getAttribute("id");
 							String NewXpath="id('"+FirstLevelValue_id+"')/ul/li";
 							
@@ -68,7 +66,6 @@ public class NavigateTo extends TestBase{
 							
 								String value=wb2.get(h).getText();
 									if(value.equalsIgnoreCase(secondLevelValue)){
-									waitinSec(1);
 									wb2.get(h).click();
 									//fluentWait(elementLocator);
 									TakeScreenshot();
