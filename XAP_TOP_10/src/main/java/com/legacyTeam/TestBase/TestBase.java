@@ -13,6 +13,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -31,6 +32,7 @@ import ExtentManager.ExtentManager;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import com.gargoylesoftware.htmlunit.javascript.background.JavaScriptExecutor;
 import com.google.common.base.Function;
 import com.leagacyTeam.readExcel.Xls_Reader;
 
@@ -112,7 +114,11 @@ public class TestBase {
 		
 		//******************************TakeScreenShot**********************************************//		
 		public void  TakeScreenshot(){
+			JavascriptExecutor js=(JavascriptExecutor)driver;
+			String State=(String) js.executeScript("return document.readyState");
 			
+			
+			if(State.equalsIgnoreCase("Complete")){
 			Date d=new Date();
 			DateFormat dformat=new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
 			String name=dformat.format(d);
@@ -130,9 +136,15 @@ public class TestBase {
 			catch(IOException e){
 				System.out.println(e.getMessage()+" Exception while taking screenshot");
 			}
-			
+			}
+			else
+			{
+				TakeScreenshot();
+				
+			}
 			
 		}
+		
 //******************************FluentWait**********************************************//	
 	public static void fluentWait(String elementLocator){
 		final String elementLocatorKey=elementLocator;
