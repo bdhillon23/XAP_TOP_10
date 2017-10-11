@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+<testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="59830" started-at="2017-10-08T14:15:04Z" finished-at="2017-10-08T14:16:04Z">
+  <suite name="Default suite" duration-ms="39139" started-at="2017-10-11T13:24:40Z" finished-at="2017-10-11T13:25:19Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="59830" started-at="2017-10-08T14:15:04Z" finished-at="2017-10-08T14:16:04Z">
-      <class name="com.legacyTest.test.NewTestClass">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.legacyTest.test.NewTestClass@80169cf]" name="init" is-config="true" duration-ms="5905" started-at="2017-10-08T19:44:58Z" finished-at="2017-10-08T19:45:04Z">
+    <test name="Default test" duration-ms="39139" started-at="2017-10-11T13:24:40Z" finished-at="2017-10-11T13:25:19Z">
+      <class name="com.legacyTest.test.TestClass">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="init" is-config="true" duration-ms="3492" started-at="2017-10-11T18:54:36Z" finished-at="2017-10-11T18:54:40Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="NavigateSideBarTest()[pri:0, instance:com.legacyTest.test.NewTestClass@80169cf]" name="NavigateSideBarTest" duration-ms="58924" started-at="2017-10-08T19:45:04Z" finished-at="2017-10-08T19:46:03Z">
+        <test-method status="PASS" signature="LaunchBrowser()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="LaunchBrowser" duration-ms="38336" started-at="2017-10-11T18:54:40Z" finished-at="2017-10-11T18:55:18Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- NavigateSideBarTest -->
-        <test-method status="PASS" signature="quite()[pri:0, instance:com.legacyTest.test.NewTestClass@80169cf]" name="quite" is-config="true" duration-ms="891" started-at="2017-10-08T19:46:03Z" finished-at="2017-10-08T19:46:04Z">
+        </test-method> <!-- LaunchBrowser -->
+        <test-method status="PASS" signature="quite()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="quite" is-config="true" duration-ms="795" started-at="2017-10-11T18:55:18Z" finished-at="2017-10-11T18:55:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quite -->
-      </class> <!-- com.legacyTest.test.NewTestClass -->
+      </class> <!-- com.legacyTest.test.TestClass -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

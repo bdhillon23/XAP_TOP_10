@@ -1,13 +1,33 @@
 package com.legacyTeam.MonthAttendence;
 
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+
+import java.util.Set;
+
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -19,6 +39,8 @@ public class getMoAttendence extends TestBase{
 	String yearsXpath="//*[@id='optyear']/option";
 	
 	Map<String,String> atndc=new HashMap<String,String>();
+	Map<Integer,Map> fvalues=new HashMap();
+	
 	public void selectYear(String yearValue){
 			fluentWait("SelfAttendanceWaiting_xpath");
 			List<WebElement> years=new ArrayList<WebElement>();
@@ -35,6 +57,7 @@ public class getMoAttendence extends TestBase{
 	
 	String monthXpath="//*[@id='optmonth']/option";
 	
+	
 	public void selectMonth(String monthValue){
 		fluentWait("SelfAttendanceWaiting_xpath");
 		List<WebElement> months=new ArrayList<WebElement>();
@@ -43,13 +66,19 @@ public class getMoAttendence extends TestBase{
 			if(months.get(i).getText().equalsIgnoreCase(monthValue)){
 				months.get(i).click();
 				System.out.println("This is the Month Value : "+months.get(i).getText());
+			
 				return;
 			}
 		}
 		
 	}
 	
-	public void monthAttendance(){
+	public Map monthAttendance(String yearValue,String monthValue,String monthNumber){
+		selectMonth(monthValue);
+		selectYear(yearValue);
+		monthValidator(monthNumber, monthValue);
+		
+		
 		List<WebElement> header=driver.findElements(By.xpath(prop.getProperty("AttendanceTableheader_xpath")));
 		List<WebElement> tValues=driver.findElements(By.xpath(prop.getProperty("AttendanceTableValues_xpath")));
 	
@@ -65,29 +94,112 @@ public class getMoAttendence extends TestBase{
 		}
 		
 		
-		
-		
-		//Getting the values of the trows
+		//Getting the values of the rows
 		for(int i=1;i<=tValues.size();i++){
 			String xpathpart1="id('tblAttendance')/tbody[1]/tr["+i+"]";
+			atndc=new HashMap<String,String>();
 			for(int j=1;j<=header.size();j++){
 				String xpathpart2="/td["+j+"]";
 				String tvalu=driver.findElement(By.xpath(xpathpart1+xpathpart2)).getText();
 				
-				atndc.put(hValues.get(j-1), tvalu);
+				atndc.put(header.get(j-1).getText(), tvalu);
+						
+			}
+			
+			fvalues.put(i-1, atndc);
+		}
+		
+		//Printing all the values fvalues
+		
+		
+		return fvalues;
+		}
+	
+	
+	public boolean monthValidator(String month,String monthName){
+		String firstdate=getElement("FirstElementVarifier_xpath").getText();
+		String s=firstdate.substring(0, 2);
+		
+		
+		if(month.contains(s) || monthName.contains(s)){
+			return true;
+			
+		}
+		firstdate=getElement("SecondElementVarifier_xpath").getText();
+		s=firstdate.substring(0, 2);
+		if(month.contains(s) || monthName.contains(s)){
+		return true;	
+		}
+		else
+		{
+			waitinSec(1);
+			monthValidator( month, monthName);
+		}
+		return false;
+		}
+	
+	public  void writeInXls(Map mapName){
+		
+		
+		XSSFWorkbook workbook=new XSSFWorkbook();
+		XSSFSheet sheet1=workbook.createSheet("Month Attendance");
+		FileOutputStream fsm=null;
+		List<String> Keys=null;
+		List<String> Values=null;
+		
 				
+		for(int i=0;i<mapName.size();i++)
+		{
+			
+			Row r1=sheet1.createRow(i);
+			Row r=sheet1.createRow(i+1);
+			Map.Entry me2=null;
+			Keys=new ArrayList<String>();
+			Values=new ArrayList<String>();
+			HashMap<String,String>  hm= (HashMap<String,String>) mapName.get(i);
+			Iterator<Map.Entry<String, String>> iterator = hm.entrySet().iterator();
+				 
+				 
+			 while(iterator.hasNext()){
+			 me2 = (Map.Entry) iterator.next();
+			 Keys.add(me2.getKey().toString());
+			 Values.add(me2.getValue().toString());
+		 }
+			
+			for(int f=0;f<Values.size();f++){
+				r.createCell(f).setCellValue(Values.get(f));
+				
+				
+			}
+			if(i==0){
+				for(int k=0;k<Keys.size();k++){
+					r1.createCell(k).setCellValue(Keys.get(k));;
+				}
 			}
 			
 		}
 		
 		
+		try
+		
+		{
+			//System.getProperty("user.dir")+prop.getProperty("generated_xcl")
+			File xclfile=new File("C:\\Users\\balwinder\\Desktop\\test.xlsx");
+			fsm=new FileOutputStream(xclfile);
+			workbook.write(fsm);
+			fsm.close();
+			
+		}
+		
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		
 	}
 	
-	public void printValues(){
-		for(int i=0;i<atndc.size();i++){
-			
-		}
-	}
+	
+	
+	
 }

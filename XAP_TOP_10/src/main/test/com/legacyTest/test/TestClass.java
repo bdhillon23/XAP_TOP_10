@@ -2,6 +2,9 @@ package com.legacyTest.test;
 
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
@@ -47,28 +50,18 @@ public class TestClass extends TestBase{
 		}	
 		
 		
-		
-		
 		fluentWait("DashboardWaiting_xpath");
+		waitinSec(2);
 		
-		
-		
-		
-		
-		waitinSec(1);
 		NavigateTo nt=new NavigateTo();
 		nt.Navigateto("My Zone", "Attendance", "Self");
 		
 		
 		getMoAttendence atnd=new getMoAttendence();
-		atnd.selectMonth("August");
-		atnd.selectYear("2017");
+		
 		fluentWait("SelfAttendanceWaiting_xpath");
-		atnd.monthAttendance();
-		
-	
-		
-		
+		Map<Integer,Map<String,String>> map=atnd.monthAttendance("2017","October","10");
+		atnd.writeInXls(map);
 		
 		
 		boolean validateLogOut=lp.logout();
@@ -79,6 +72,7 @@ public class TestClass extends TestBase{
 		
 		
 	}
+	
 	@AfterMethod
 	public void quite(){
 	
