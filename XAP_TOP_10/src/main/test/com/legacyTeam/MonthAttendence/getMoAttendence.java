@@ -119,15 +119,16 @@ public class getMoAttendence extends TestBase{
 	public boolean monthValidator(String month,String monthName){
 		String firstdate=getElement("FirstElementVarifier_xpath").getText();
 		String s=firstdate.substring(0, 2);
+		String firstdate1=getElement("SecondElementVarifier_xpath").getText();
+		String s1=firstdate1.substring(0, 2);
 		
-		
+		try{
 		if(month.contains(s) || monthName.contains(s)){
-			return true;
+		return true;
 			
 		}
-		firstdate=getElement("SecondElementVarifier_xpath").getText();
-		s=firstdate.substring(0, 2);
-		if(month.contains(s) || monthName.contains(s)){
+		
+		if(month.contains(s1) || monthName.contains(s1)){
 		return true;	
 		}
 		else
@@ -135,24 +136,27 @@ public class getMoAttendence extends TestBase{
 			waitinSec(1);
 			monthValidator( month, monthName);
 		}
+	
+		}catch(Exception e){
+			monthValidator( month, monthName);
+		}
 		return false;
 		}
 	
 	public  void writeInXls(Map mapName){
-		
-		
+			
 		XSSFWorkbook workbook=new XSSFWorkbook();
 		XSSFSheet sheet1=workbook.createSheet("Month Attendance");
 		FileOutputStream fsm=null;
 		List<String> Keys=null;
 		List<String> Values=null;
-		
-				
+		Row r1=sheet1.createRow(0);
+		Row r=null;		
 		for(int i=0;i<mapName.size();i++)
 		{
 			
-			Row r1=sheet1.createRow(i);
-			Row r=sheet1.createRow(i+1);
+			
+			r=sheet1.createRow(i+1);
 			Map.Entry me2=null;
 			Keys=new ArrayList<String>();
 			Values=new ArrayList<String>();
@@ -184,7 +188,7 @@ public class getMoAttendence extends TestBase{
 		
 		{
 			//System.getProperty("user.dir")+prop.getProperty("generated_xcl")
-			File xclfile=new File("C:\\Users\\balwinder\\Desktop\\test.xlsx");
+			File xclfile=new File(System.getProperty("user.dir")+prop.getProperty("generated_xcl"));
 			fsm=new FileOutputStream(xclfile);
 			workbook.write(fsm);
 			fsm.close();
