@@ -12,6 +12,9 @@ import java.util.Map;
 
 import java.util.Set;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -32,6 +35,15 @@ import org.openqa.selenium.WebElement;
 
 
 
+
+
+
+
+
+
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.Markup;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.legacyTeam.TestBase.TestBase;
 
 public class getMoAttendence extends TestBase{
@@ -74,6 +86,7 @@ public class getMoAttendence extends TestBase{
 	}
 	
 	public Map monthAttendance(String yearValue,String monthValue,String monthNumber){
+		
 		selectMonth(monthValue);
 		selectYear(yearValue);
 		monthValidator(monthNumber, monthValue);
@@ -143,16 +156,25 @@ public class getMoAttendence extends TestBase{
 		return false;
 		}
 	
-	public  void writeInXls(Map mapName){
-			
+	public  void  writeInXls(Map mapName){
+		String XlsxPath=null;
 		XSSFWorkbook workbook=new XSSFWorkbook();
 		XSSFSheet sheet1=workbook.createSheet("Month Attendance");
+		
 		FileOutputStream fsm=null;
+		
 		List<String> Keys=null;
 		List<String> Values=null;
+		
 		Row r1=sheet1.createRow(0);
 		Row r=null;		
+		CellStyle style= workbook.createCellStyle();
+		style.setFillForegroundColor(IndexedColors.GREEN.getIndex());
+		style.setFillPattern(CellStyle.SOLID_FOREGROUND);
+		
+		Cell c1;
 		for(int i=0;i<mapName.size();i++)
+		
 		{
 			
 			
@@ -172,12 +194,16 @@ public class getMoAttendence extends TestBase{
 			
 			for(int f=0;f<Values.size();f++){
 				r.createCell(f).setCellValue(Values.get(f));
-				
+				sheet1.autoSizeColumn(f);
 				
 			}
 			if(i==0){
 				for(int k=0;k<Keys.size();k++){
-					r1.createCell(k).setCellValue(Keys.get(k));;
+				
+					sheet1.autoSizeColumn(k);
+					c1=r1.createCell(k);
+					c1.setCellStyle(style);
+					c1.setCellValue(Keys.get(k));
 				}
 			}
 			
@@ -187,11 +213,13 @@ public class getMoAttendence extends TestBase{
 		try
 		
 		{
+			XlsxPath=System.getProperty("user.dir")+prop.getProperty("generated_xcl");
 			//System.getProperty("user.dir")+prop.getProperty("generated_xcl")
 			File xclfile=new File(System.getProperty("user.dir")+prop.getProperty("generated_xcl"));
 			fsm=new FileOutputStream(xclfile);
 			workbook.write(fsm);
 			fsm.close();
+			logger.log(Status.PASS, "Here is the link of attendance file : <a href= '"+ XlsxPath +"'>"+"Link for Attendance Excel File"+"</a>");
 			
 		}
 		

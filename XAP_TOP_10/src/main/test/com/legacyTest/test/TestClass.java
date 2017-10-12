@@ -60,7 +60,7 @@ public class TestClass extends TestBase{
 		getMoAttendence atnd=new getMoAttendence();
 		
 		fluentWait("SelfAttendanceWaiting_xpath");
-		Map<Integer,Map<String,String>> map=atnd.monthAttendance("2017","August","08");
+		Map<Integer,Map<String,String>> map=atnd.monthAttendance("2017","September","09");
 		atnd.writeInXls(map);
 		
 		
