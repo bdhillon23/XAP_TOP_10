@@ -3,17 +3,13 @@ package com.leagacyTeam.readExcel;
 import java.util.Hashtable;
 
 public class DataUtil {
+	
 public static String TestCaseName;	
 
 public static Object[][] getData(Xls_Reader reader,String TestCaseName){
 	
 	
-	//int RowCount=reader.getRowCount("Data"); 
-	
-	//int ColCount=reader.getColumnCount("Data");
-	
-	
-	
+
 	int CurrentRowNumber=0;
 	while(!reader.getCellData("Data", 0, CurrentRowNumber).equals(TestCaseName)){
 		CurrentRowNumber=CurrentRowNumber+1;
@@ -21,7 +17,7 @@ public static Object[][] getData(Xls_Reader reader,String TestCaseName){
 	
 	
 	int Start_TestDataRow=CurrentRowNumber+2;
-	//int ColStartRow=CurrentRowNumber+1;
+	
 	
 	
 	

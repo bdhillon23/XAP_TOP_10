@@ -43,7 +43,7 @@ public class TestBase {
 	public static WebDriver driver;
 	public DesiredCapabilities cap;
 	public SoftAssert asrt = new SoftAssert();
-	public Xls_Reader reader;
+	public static Xls_Reader reader;
 	public  static Properties prop;
 	public ExtentReports extent=ExtentManager.getInstance();
 	public static ExtentTest logger;

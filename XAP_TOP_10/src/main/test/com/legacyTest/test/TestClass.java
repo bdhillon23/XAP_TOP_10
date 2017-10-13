@@ -1,37 +1,29 @@
 package com.legacyTest.test;
-
-
-
-import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import org.testng.AssertJUnit;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
-
-
-
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 
 import com.legacyTeam.MonthAttendence.getMoAttendence;
 import com.legacyTeam.TestBase.TestBase;
 import com.legacyTeam.dashboard.NavigateTo;
-import com.legacyTeam.dashboard.notificationPanel;
 import com.legacyTeam.loginPage.loginPage;
+
 
 public class TestClass extends TestBase{
 	
 	
 	public static Assert asrt;
 	
-	@Test
-	public void LaunchBrowser(){
+	@Test (dataProvider="getData")
+	public void LaunchBrowser(Hashtable <String,String> data){
 		
-		logger=extent.createTest("LaunchBrowser");
+		logger=extent.createTest("LaunchBrowser"+data);
 		
 		logger.info("Starting test case");
 		
@@ -60,7 +52,7 @@ public class TestClass extends TestBase{
 		getMoAttendence atnd=new getMoAttendence();
 		
 		fluentWait("SelfAttendanceWaiting_xpath");
-		Map<Integer,Map<String,String>> map=atnd.monthAttendance("2017","September","09");
+		Map<Integer,Map<String,String>> map=atnd.monthAttendance(data.get("YearNumber"),data.get("MonthName"),data.get("MonthNumber"));
 		atnd.writeInXls(map);
 		
 		
@@ -73,7 +65,16 @@ public class TestClass extends TestBase{
 		
 	}
 	
-	@AfterMethod
+	
+	@DataProvider
+	public Object[][] getData() {
+	Object[][] data = com.leagacyTeam.readExcel.DataUtil.getData(reader,
+			"LaunchBrowser");
+	return data;
+	}
+	
+	
+	@AfterSuite
 	public void quite(){
 	
 		if(extent!=null){
@@ -84,6 +85,7 @@ public class TestClass extends TestBase{
 		}
 	
 		}
+	
 	@BeforeSuite
 	public void init(){
 		
