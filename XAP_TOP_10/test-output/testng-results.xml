@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="56087" started-at="2017-10-12T13:51:53Z" finished-at="2017-10-12T13:52:49Z">
+  <suite name="Default suite" duration-ms="49031" started-at="2017-10-13T06:39:04Z" finished-at="2017-10-13T06:39:53Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="56087" started-at="2017-10-12T13:51:53Z" finished-at="2017-10-12T13:52:49Z">
+    <test name="Default test" duration-ms="49031" started-at="2017-10-13T06:39:04Z" finished-at="2017-10-13T06:39:53Z">
       <class name="com.legacyTest.test.TestClass">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="init" is-config="true" duration-ms="3214" started-at="2017-10-12T19:21:50Z" finished-at="2017-10-12T19:21:53Z">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="init" is-config="true" duration-ms="3280" started-at="2017-10-13T12:09:01Z" finished-at="2017-10-13T12:09:04Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="LaunchBrowser()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="LaunchBrowser" duration-ms="55321" started-at="2017-10-12T19:21:53Z" finished-at="2017-10-12T19:22:49Z">
+        <test-method status="PASS" signature="LaunchBrowser()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="LaunchBrowser" duration-ms="48254" started-at="2017-10-13T12:09:04Z" finished-at="2017-10-13T12:09:52Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LaunchBrowser -->
-        <test-method status="PASS" signature="quite()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="quite" is-config="true" duration-ms="754" started-at="2017-10-12T19:22:49Z" finished-at="2017-10-12T19:22:49Z">
+        <test-method status="PASS" signature="quite()[pri:0, instance:com.legacyTest.test.TestClass@ecb35a]" name="quite" is-config="true" duration-ms="768" started-at="2017-10-13T12:09:52Z" finished-at="2017-10-13T12:09:53Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quite -->

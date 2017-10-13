@@ -131,7 +131,7 @@ public class TestBase {
 			try{
 				
 				FileUtils.copyFile(src, new File(path));
-				logger.addScreenCaptureFromPath(path);
+				logger.log(Status.INFO, "<a href='" +path+"'>"+ "Image Link" +"</a>");
 			}
 			catch(IOException e){
 				System.out.println(e.getMessage()+" Exception while taking screenshot");

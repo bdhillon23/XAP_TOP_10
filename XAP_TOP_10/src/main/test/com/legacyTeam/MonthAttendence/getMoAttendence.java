@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +42,7 @@ import org.openqa.selenium.WebElement;
 
 
 
+
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
@@ -54,6 +56,7 @@ public class getMoAttendence extends TestBase{
 	Map<Integer,Map> fvalues=new HashMap();
 	
 	public void selectYear(String yearValue){
+		
 			fluentWait("SelfAttendanceWaiting_xpath");
 			List<WebElement> years=new ArrayList<WebElement>();
 			years=driver.findElements(By.xpath(yearsXpath));
@@ -102,7 +105,9 @@ public class getMoAttendence extends TestBase{
 		for(int i=1;i<=header.size();i++){
 			String xpathpart1="id('tblAttendance')/thead[1]/tr[1]/th["+i+"]";
 			String val=driver.findElement(By.xpath(xpathpart1)).getText();
-			hValues.add(val); 
+			
+			hValues.add(i-1, val); 
+			
 			
 		}
 		
@@ -110,13 +115,15 @@ public class getMoAttendence extends TestBase{
 		//Getting the values of the rows
 		for(int i=1;i<=tValues.size();i++){
 			String xpathpart1="id('tblAttendance')/tbody[1]/tr["+i+"]";
-			atndc=new HashMap<String,String>();
-			for(int j=1;j<=header.size();j++){
+			atndc=new LinkedHashMap<String,String>();
+			for(int j=1;j<=header.size();j++){ 
+				
 				String xpathpart2="/td["+j+"]";
 				String tvalu=driver.findElement(By.xpath(xpathpart1+xpathpart2)).getText();
 				
+				
 				atndc.put(header.get(j-1).getText(), tvalu);
-						
+				
 			}
 			
 			fvalues.put(i-1, atndc);
@@ -179,6 +186,7 @@ public class getMoAttendence extends TestBase{
 			
 			
 			r=sheet1.createRow(i+1);
+			
 			Map.Entry me2=null;
 			Keys=new ArrayList<String>();
 			Values=new ArrayList<String>();

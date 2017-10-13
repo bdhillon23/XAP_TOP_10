@@ -23,14 +23,12 @@ public class ExtentManager {
 		if(extent==null){
 		
 		HtmlReporter=new ExtentHtmlReporter(System.getProperty("user.dir")+"//Report//MyOwnReport.html");
-		
 		HtmlReporter.config().setChartVisibilityOnOpen(true);
-		HtmlReporter.config().setReportName("Balwinder Report");
-		HtmlReporter.config().setDocumentTitle("DocumentTitle");
+		HtmlReporter.config().setReportName("Top 10 Test Cases");
+		HtmlReporter.config().setDocumentTitle("XAP Automation");
 		HtmlReporter.config().setTestViewChartLocation(ChartLocation.TOP);
-		HtmlReporter.config().setTheme(Theme.DARK);
-	//	HtmlReporter.loadConfig("D://Workspace//LearningAutomation//Extent-Config.xml");
-	//	HtmlReporter.setAppendExisting(true);
+		HtmlReporter.config().setTheme(Theme.STANDARD);
+	
 		extent=new ExtentReports();
 		extent.attachReporter(HtmlReporter);
 		return extent;
