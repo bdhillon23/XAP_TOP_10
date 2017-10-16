@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" total="2" passed="2">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="86612" started-at="2017-10-13T09:29:30Z" finished-at="2017-10-13T09:30:57Z">
+  <suite name="Suite" duration-ms="105597" started-at="2017-10-16T11:56:20Z" finished-at="2017-10-16T11:58:06Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="86612" started-at="2017-10-13T09:29:30Z" finished-at="2017-10-13T09:30:57Z">
+    <test name="Test" duration-ms="105597" started-at="2017-10-16T11:56:20Z" finished-at="2017-10-16T11:58:06Z">
       <class name="com.legacyTest.test.TestClass">
-        <test-method status="PASS" signature="init()[pri:0, instance:com.legacyTest.test.TestClass@b87145]" name="init" is-config="true" duration-ms="3419" started-at="2017-10-13T14:59:27Z" finished-at="2017-10-13T14:59:30Z">
+        <test-method status="PASS" signature="init()[pri:0, instance:com.legacyTest.test.TestClass@15bfd87]" name="init" is-config="true" duration-ms="8022" started-at="2017-10-16T17:26:12Z" finished-at="2017-10-16T17:26:20Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- init -->
-        <test-method status="PASS" signature="LaunchBrowser(java.util.Hashtable)[pri:0, instance:com.legacyTest.test.TestClass@b87145]" name="LaunchBrowser" duration-ms="51904" started-at="2017-10-13T14:59:30Z" data-provider="getData" finished-at="2017-10-13T15:00:22Z">
+        <test-method status="PASS" signature="LaunchBrowser(java.util.Hashtable)[pri:0, instance:com.legacyTest.test.TestClass@15bfd87]" name="LaunchBrowser" duration-ms="66104" started-at="2017-10-16T17:26:20Z" data-provider="getData" finished-at="2017-10-16T17:27:27Z">
           <params>
             <param index="0">
               <value>
@@ -22,7 +22,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LaunchBrowser -->
-        <test-method status="PASS" signature="LaunchBrowser(java.util.Hashtable)[pri:0, instance:com.legacyTest.test.TestClass@b87145]" name="LaunchBrowser" duration-ms="34687" started-at="2017-10-13T15:00:22Z" data-provider="getData" finished-at="2017-10-13T15:00:57Z">
+        <test-method status="PASS" signature="LaunchBrowser(java.util.Hashtable)[pri:0, instance:com.legacyTest.test.TestClass@15bfd87]" name="LaunchBrowser" duration-ms="39389" started-at="2017-10-16T17:27:27Z" data-provider="getData" finished-at="2017-10-16T17:28:06Z">
           <params>
             <param index="0">
               <value>
@@ -33,11 +33,11 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- LaunchBrowser -->
-        <test-method status="PASS" signature="quite()[pri:0, instance:com.legacyTest.test.TestClass@b87145]" name="quite" is-config="true" duration-ms="843" started-at="2017-10-13T15:00:57Z" finished-at="2017-10-13T15:00:57Z">
+        <test-method status="PASS" signature="quite()[pri:0, instance:com.legacyTest.test.TestClass@15bfd87]" name="quite" is-config="true" duration-ms="1565" started-at="2017-10-16T17:28:06Z" finished-at="2017-10-16T17:28:08Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- quite -->
       </class> <!-- com.legacyTest.test.TestClass -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
 </testng-results>
