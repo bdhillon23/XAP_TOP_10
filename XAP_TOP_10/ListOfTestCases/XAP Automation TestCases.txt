@@ -1,10 +1,10 @@
-TC01_Apply_Leave
-TC02_GetNotifications
-TC03_GetAttendance
-TC04_GetKRAByPassingYear&Quater
-TC05_Cancel_Leave
-TC06_GetAllEmployee_Details
-TC07_GetLoginHours_ForAWeek
-TC08_GetLoginHours_ForADate
-TC09_Add_ToDoList
-TC10_GetAllLeaves_WithCategoryType
+TC01_Apply_Leave----Can't do---Leave History
+TC02_GetNotifications----Almost done
+TC03_GetAttendance--done
+TC04_GetKRAByPassingYear&Quater-----need to work on 
+TC05_Cancel_Leave-----Can't do
+TC06_GetAllEmployee_Details---Need to work on
+TC07_GetLoginHours_ForAWeek----can be done
+TC08_GetLoginHours_ForADate----can be done
+TC09_Add_ToDoList----can be done
+TC10_GetAllLeaves_WithCategoryType--can be done.
