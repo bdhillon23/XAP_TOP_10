@@ -52,6 +52,7 @@ public class TestClass extends TestBase{
 		getMoAttendence atnd=new getMoAttendence();
 		
 		fluentWait("SelfAttendanceWaiting_xpath");
+		
 		Map<Integer,Map<String,String>> map=atnd.monthAttendance(data.get("YearNumber"),data.get("MonthName"),data.get("MonthNumber"));
 		atnd.writeInXls(map);
 		
@@ -60,7 +61,7 @@ public class TestClass extends TestBase{
 		if(validateLogOut==true){
 		logger.pass("Logout successfull");	
 		}
-		asrt.assertEquals(validateLogOut, true);
+		Assert.assertEquals(validateLogOut, true);
 		
 		
 	}
