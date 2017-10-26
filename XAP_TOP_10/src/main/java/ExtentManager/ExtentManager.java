@@ -55,12 +55,4 @@ public class ExtentManager {
 		
 	}
 	
-/*@AfterSuite
-	public void teardown(){
-		if(extent!=null){
-		
-		extent.flush();}
-				
-	}*/
-	
 }

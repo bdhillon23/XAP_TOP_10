@@ -5,7 +5,7 @@
     <classes>
       <class name="com.legacyTest.test.TestClass">
         <methods>
-          <include name="LaunchBrowser"/>
+          <include name="LaunchBrowser" invocation-numbers="0 1"/>
           <include name="init"/>
           <include name="quite"/>
         </methods>

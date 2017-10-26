@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.legacyTest.test.TestClass">
+      <class name="com.legacyTest.test.TC03_GetAttendance">
         <methods>
-          <include name="LaunchBrowser"/>
           <include name="init"/>
+          <include name="LaunchBrowser" invocation-numbers="1"/>
           <include name="quite"/>
         </methods>
-      </class> <!-- com.legacyTest.test.TestClass -->
+      </class> <!-- com.legacyTest.test.TC03_GetAttendance -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
