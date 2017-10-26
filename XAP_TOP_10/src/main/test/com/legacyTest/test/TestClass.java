@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -32,7 +31,7 @@ public class TestClass extends TestBase{
 		String text=lp.validateLogin();
 		
 		if(text.contains("Success")){
-		asrt.assertEquals(text, "Login Successfully");
+		Assert.assertEquals(text, "Login Successfully");
 		logger.pass("login Successfull");
 		
 		}
@@ -54,7 +53,7 @@ public class TestClass extends TestBase{
 		fluentWait("SelfAttendanceWaiting_xpath");
 		
 		Map<Integer,Map<String,String>> map=atnd.monthAttendance(data.get("YearNumber"),data.get("MonthName"),data.get("MonthNumber"));
-		atnd.writeInXls(map);
+		atnd.writeInXls(map ,data.get("MonthName"));
 		
 		
 		boolean validateLogOut=lp.logout();

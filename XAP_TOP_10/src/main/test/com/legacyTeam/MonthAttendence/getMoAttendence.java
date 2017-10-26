@@ -2,47 +2,32 @@ package com.legacyTeam.MonthAttendence;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 import java.util.Set;
 
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
@@ -163,12 +148,26 @@ public class getMoAttendence extends TestBase{
 		return false;
 		}
 	
-	public  void  writeInXls(Map mapName){
+	public  void  writeInXls(Map mapName,String mName){
 		String XlsxPath=null;
-		XSSFWorkbook workbook=new XSSFWorkbook();
-		XSSFSheet sheet1=workbook.createSheet("Month Attendance");
+		File xclfile=new File(System.getProperty("user.dir")+prop.getProperty("generated_xcl"));
+		XlsxPath=System.getProperty("user.dir")+prop.getProperty("generated_xcl");
+		Workbook workbook = null;
+		FileInputStream fim= null;
+		try {	
+			fim=new FileInputStream(xclfile);		
+			workbook = new HSSFWorkbook(fim);
+		}  catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		Sheet sheet1;
 		
-		FileOutputStream fsm=null;
+		//int sheetCount=workbook.getNumberOfSheets();
+		
+			sheet1=workbook.createSheet(mName);
+			
+	
 		
 		List<String> Keys=null;
 		List<String> Values=null;
@@ -221,12 +220,13 @@ public class getMoAttendence extends TestBase{
 		try
 		
 		{
-			XlsxPath=System.getProperty("user.dir")+prop.getProperty("generated_xcl");
-			//System.getProperty("user.dir")+prop.getProperty("generated_xcl")
-			File xclfile=new File(System.getProperty("user.dir")+prop.getProperty("generated_xcl"));
-			fsm=new FileOutputStream(xclfile);
+			
+			FileOutputStream fsm=new FileOutputStream(xclfile);
 			workbook.write(fsm);
+			fim.close();
+			workbook.close();
 			fsm.close();
+		
 			logger.log(Status.PASS, "Here is the link of attendance file : <a href= '"+ XlsxPath +"'>"+"Link for Attendance Excel File"+"</a>");
 			
 		}
