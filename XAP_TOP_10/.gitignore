@@ -1,10 +1,10 @@
-/target/
+/target/*
 
-/test-output/
+/test-output/*
 
-/ExcelAttendance/
+/ExcelAttendance/*
 
-/Drivers/
+/Drivers/*
 
 /automation.out
 
