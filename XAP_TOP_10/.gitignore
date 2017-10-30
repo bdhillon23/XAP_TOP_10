@@ -1,16 +1,28 @@
+#The target folder
 target/*
 
 
+
+#The Test Output folder
 test-output/*
 
 
+
+#ExcelOutput
 ExcelAttendance/*
+
+
+#Driver exe
 
 
 Drivers/*
 
 
-automation.out
+
+#reports
+Report/*
+
+
 /*
 .png
 
@@ -19,6 +31,7 @@ automation.out
 /*.xls
 
 /*.html
+
 
 
 
