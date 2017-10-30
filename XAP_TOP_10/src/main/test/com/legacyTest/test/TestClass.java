@@ -27,7 +27,7 @@ public class TestClass extends TestBase{
 		logger.info("Starting test case");
 		
 		loginPage lp=new loginPage(driver);
-		lp.login("balwinder", "Xavient@2");
+		lp.login(prop.getProperty("username"), prop.getProperty("password"));
 		String text=lp.validateLogin();
 		
 		if(text.contains("Success")){
