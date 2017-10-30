@@ -1,35 +1,16 @@
 #The target folder
 target/*
-
-
-
 #The Test Output folder
 test-output/*
-
-
-
 #ExcelOutput
 ExcelAttendance/*
-
-
 #Driver exe
-
-
 Drivers/*
-
-
-
 #reports
 Report/*
-
-
-/*
-.png
-
+/*.png
 /*.class
-
 /*.xls
-
 /*.html
 
 
