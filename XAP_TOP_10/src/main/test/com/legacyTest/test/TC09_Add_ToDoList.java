@@ -16,13 +16,13 @@ import com.legacyTeam.loginPage.loginPage;
 
 public class TC09_Add_ToDoList extends TestBase{
 
+
 	public static Assert asrt;
 	
 	@Test (dataProvider="getData")
 	public void Add_ToDoList(Hashtable <String,String> data){
 		
-		logger=extent.createTest(" TC09_Add_ToDoList "+data);
-		
+		logger=extent.createTest(" TC09_Add_ToDoList "+data);		
 		logger.info("********** Starting Test Case **********");
 		
 		loginPage lp=new loginPage(driver);
@@ -93,4 +93,5 @@ public class TC09_Add_ToDoList extends TestBase{
 			tb.init();
 		}
 	}
+
 }
