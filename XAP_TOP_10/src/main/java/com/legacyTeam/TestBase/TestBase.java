@@ -227,8 +227,17 @@ public class TestBase {
 		}
 		return false;
 	}
+//******************************************ScrollElementVisible***************************************//
+	public void scrollElementVisible(WebElement element){
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		waitinSec(1); 
+	}
 	
-	
+//*******************************************Scroll***************************************************//
+	public void scroll(){
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("window.scrollBy(0,50)", "");
+	}
 	
 	
 }
