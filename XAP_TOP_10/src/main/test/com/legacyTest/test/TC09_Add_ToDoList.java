@@ -43,7 +43,10 @@ public class TC09_Add_ToDoList extends TestBase{
 		waitinSec(2);
 		
 		ToDoListFunctions td=new ToDoListFunctions(driver);
-		td.scrollToDoList();
+		//td.scrollToDoList();
+		td.addlist("March", 24, 2018, "This is the to do list test");
+		
+		
 		
 		/*NavigateTo nt=new NavigateTo();
 		nt.Navigateto("My Zone", "Attendance", "Self");
