@@ -41,7 +41,8 @@ public class ToDoListFunctions extends TestBase {
 	@FindBy(xpath="//div[@class='datepicker-days' ]//tbody/tr")
 	WebElement datetrs;
 	
-		
+	@FindBy(id="btnADDNewToDo")
+	WebElement saveChangesbtn;
 	
 	
 	
@@ -58,7 +59,7 @@ public class ToDoListFunctions extends TestBase {
 		boolean onDashboard =dashboardWaitingElement.isDisplayed();
 		if(onDashboard == true){
 				do{
-			      scroll(280);
+			      scroll(320);
 				}while(!todolistobject.isDisplayed());
 			
 		return true;
@@ -84,8 +85,9 @@ public class ToDoListFunctions extends TestBase {
 			displayCalender.click();
 				
 			selecMonth(month,year);
+			waitinSec(1);
 			selectDate(date);
-			
+			saveChangesbtn.click();
 			
 		}else
 			scrollToDoList();
@@ -145,8 +147,9 @@ public class ToDoListFunctions extends TestBase {
 			 int calendar_trtd=driver.findElements(By.xpath(xpath1)).size();
 			for(int f=1;f<=calendar_trtd;f++){
 				WebElement e=driver.findElement(By.xpath(xpath1+"["+f+"]"));
-			String CurrentDate=	e.getText();
-				if(CurrentDate.equals(date)){
+				String CurrentDate=	e.getText();
+				int d=Integer.parseInt(CurrentDate);
+				if(d==date){
 					e.click();
 					return;
 				}
