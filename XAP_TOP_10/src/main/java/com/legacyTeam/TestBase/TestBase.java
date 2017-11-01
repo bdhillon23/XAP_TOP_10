@@ -231,13 +231,16 @@ public class TestBase {
 	public void scrollElementVisible(WebElement element){
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 		waitinSec(1); 
+		
 	}
 	
 //*******************************************Scroll***************************************************//
-	public void scroll(){
+	public void scroll(int scrollValue){
+		final int x=scrollValue;
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("window.scrollBy(0,50)", "");
+		jse.executeScript("window.scrollBy(0,"+x+")", "");
 	}
+	
 	
 	
 }

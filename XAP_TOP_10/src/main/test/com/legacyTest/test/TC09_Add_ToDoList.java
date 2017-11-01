@@ -12,11 +12,10 @@ import org.testng.annotations.Test;
 import com.legacyTeam.MonthAttendence.getMoAttendence;
 import com.legacyTeam.TestBase.TestBase;
 import com.legacyTeam.dashboard.NavigateTo;
+import com.legacyTeam.dashboard.ToDoListFunctions;
 import com.legacyTeam.loginPage.loginPage;
 
 public class TC09_Add_ToDoList extends TestBase{
-
-
 	public static Assert asrt;
 	
 	@Test (dataProvider="getData")
@@ -43,7 +42,10 @@ public class TC09_Add_ToDoList extends TestBase{
 		fluentWait("DashboardWaiting_xpath");
 		waitinSec(2);
 		
-		NavigateTo nt=new NavigateTo();
+		ToDoListFunctions td=new ToDoListFunctions(driver);
+		td.scrollToDoList();
+		
+		/*NavigateTo nt=new NavigateTo();
 		nt.Navigateto("My Zone", "Attendance", "Self");
 		
 		
@@ -53,7 +55,7 @@ public class TC09_Add_ToDoList extends TestBase{
 		
 		Map<Integer,Map<String,String>> map=atnd.monthAttendance(data.get("YearNumber"),data.get("MonthName"),data.get("MonthNumber"));
 		atnd.writeInXls(map ,data.get("MonthName"));
-		
+		*/
 		
 		boolean validateLogOut=lp.logout();
 		if(validateLogOut==true){

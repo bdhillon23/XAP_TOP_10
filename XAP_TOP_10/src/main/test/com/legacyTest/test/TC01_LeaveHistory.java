@@ -43,7 +43,7 @@ public static Assert asrt;
 		fluentWait("DashboardWaiting_xpath");
 		waitinSec(1);
 		//WebElement e=driver.findElement(By.xpath("id('sidebar')/li[2]/a[1]"));
-		scroll();	
+		scroll(50);	
 		
 		NavigateTo nt=new NavigateTo();
 		nt.Navigateto("My Zone", "Leave", "Leave Account");
