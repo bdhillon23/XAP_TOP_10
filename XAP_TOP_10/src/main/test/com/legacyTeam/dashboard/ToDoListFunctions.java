@@ -84,7 +84,7 @@ public class ToDoListFunctions extends TestBase {
 			textArea.sendKeys(TextDetails);
 			displayCalender.click();
 				
-			selecMonth(month,year);
+			selectMonth(month,year);
 			waitinSec(1);
 			selectDate(date);
 			saveChangesbtn.click();
@@ -96,7 +96,7 @@ public class ToDoListFunctions extends TestBase {
 	
 	
 	
-	public void selecMonth(String Month,Integer expectedYear){
+	public void selectMonth(String Month,Integer expectedYear){
 		String monthText=monthyearText.getText();
 		int lengthoftext=monthText.length();
 		
