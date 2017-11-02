@@ -1,5 +1,7 @@
 package com.legacyTeam.dashboard;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -44,9 +46,11 @@ public class ToDoListFunctions extends TestBase {
 	@FindBy(id="btnADDNewToDo")
 	WebElement saveChangesbtn;
 	
+	@FindBy(xpath="id('todotab'/li")
+	WebElement selectedtab;
 	
-	
-	
+	@FindBy(xpath="id('divToDo')//li")
+	WebElement listItemsInTab;
 	
 	
 	public ToDoListFunctions(WebDriver driver){
@@ -158,6 +162,32 @@ public class ToDoListFunctions extends TestBase {
 			 
 		 }
 		 
+	}
+	
+	public void selectTab(String tabtobeSelected){
+		List<WebElement> todotabs=driver.findElements(By.xpath("id('todotab'/li"));
+		for(int i=1;i<=todotabs.size();i++){
+			String tab=todotabs.get(i).getText();
+			if(tabtobeSelected.equalsIgnoreCase(tab)){
+				todotabs.get(i).click();
+				return;
+			}
+		}
+	
+	}
+	
+	
+	public boolean VerifyToDoList(String todolisttext,String tab){
+		List<WebElement> itemsOnTab=driver.findElements(By.xpath("id('divToDo')//li"));
+		for(int i=1;i<=itemsOnTab.size();i++){
+			String xpath1="id('divToDo')//li["+i+"]//div[@class='task-title']/span";
+			String actualtext=driver.findElement(By.xpath(xpath1)).getText();
+			if(actualtext.contains(todolisttext)){
+				return true;
+			}
+		}
+		return false;	
+					
 	}
 	
 }
