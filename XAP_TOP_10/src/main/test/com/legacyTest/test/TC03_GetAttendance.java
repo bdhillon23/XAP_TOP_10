@@ -1,9 +1,13 @@
 package com.legacyTest.test;
 
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+
 import java.util.Hashtable;
 import java.util.Map;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.DataProvider;
@@ -16,27 +20,27 @@ import com.legacyTeam.loginPage.loginPage;
 
 public class TC03_GetAttendance extends TestBase{
 
-	public static Assert asrt;
+	public  Assert asrt;
 	
 	@Test (dataProvider="getData")
-	public void LaunchBrowser(Hashtable <String,String> data){
+	public void GetAttendance(Hashtable <String,String> data){
 		
 		logger=extent.createTest(" TC03_GetAttendance "+data);
 		
 		logger.info("********** Starting Test Case **********");
-		
+		start(prop.getProperty("browser"),  prop.getProperty("URL"));
 		loginPage lp=new loginPage(driver);
 		lp.login(prop.getProperty("username"), prop.getProperty("password"));
 		String text=lp.validateLogin();
 		
 		if(text.contains("Success")){
-		Assert.assertEquals(text, "Login Successfully");
+		asrt.assertEquals(text, "Login Successfully");
 		logger.pass("login Successfull");
 		
 		}
 		else{
-			Assert.fail();
-			Assert.fail("Login Failed");
+			asrt.fail();
+			asrt.fail("Login Failed");
 		}	
 		
 		
@@ -59,7 +63,7 @@ public class TC03_GetAttendance extends TestBase{
 		if(validateLogOut==true){
 		logger.pass("Logout successfull");	
 		}
-		Assert.assertEquals(validateLogOut, true);
+		asrt.assertEquals(validateLogOut, true);
 		logger.info("********** Ending Test Case **********");
 		
 	}
@@ -68,12 +72,12 @@ public class TC03_GetAttendance extends TestBase{
 	@DataProvider
 	public Object[][] getData() {
 	Object[][] data = com.leagacyTeam.readExcel.DataUtil.getData(reader,
-			"LaunchBrowser");
+			"GetAttendance");
 	return data;
 	}
 	
 	
-	@AfterSuite
+	@AfterMethod
 	public void quite(){
 	
 		if(extent!=null){
