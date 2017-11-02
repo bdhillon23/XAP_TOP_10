@@ -42,7 +42,7 @@ public class NavigateTo extends TestBase{
 			if(titleName.equalsIgnoreCase(Title)){
 				logger.info("Title Matchs");
 				e.click();
-				waitinSec(2);
+				waitinSec(1);
 				//Actions act=new Actions(driver);
 				String xpathf=xpathForSidebar+"/ul/li";
 				List<WebElement> wb=driver.findElements(By.xpath(xpathf));
@@ -66,7 +66,7 @@ public class NavigateTo extends TestBase{
 							
 								String value=wb2.get(h).getText();
 									if(value.equalsIgnoreCase(secondLevelValue)){
-									wb2.get(h).click();
+										wb2.get(h).click();
 									//fluentWait(elementLocator);
 									TakeScreenshot();
 									return;

@@ -3,13 +3,13 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="com.legacyTest.test.TestClass">
+      <class name="com.legacyTest.test.TC09_Add_ToDoList">
         <methods>
-          <include name="LaunchBrowser" invocation-numbers="0 1"/>
+          <include name="Add_ToDoList" invocation-numbers="1"/>
           <include name="init"/>
           <include name="quite"/>
         </methods>
-      </class> <!-- com.legacyTest.test.TestClass -->
+      </class> <!-- com.legacyTest.test.TC09_Add_ToDoList -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

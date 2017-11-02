@@ -1,4 +1,4 @@
-TC01_Apply_Leave----Can't do---Leave History
+TC01_LeaveHistory----Can't do---Leave History
 TC02_GetNotifications----Almost done
 TC03_GetAttendance--done
 TC04_GetKRAByPassingYear&Quater-----need to work on 
