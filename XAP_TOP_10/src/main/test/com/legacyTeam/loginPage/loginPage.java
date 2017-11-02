@@ -43,7 +43,7 @@ public class loginPage extends TestBase{
 		loginField.sendKeys(username);
 		passwordField.sendKeys(password);
 		loginBtn.click();
-		log.info("CLicked on the login button");
+		log.info("Clicked on the login button");
 	
 		
 	}

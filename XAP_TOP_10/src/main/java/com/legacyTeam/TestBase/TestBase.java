@@ -61,7 +61,7 @@ public class TestBase {
 			String log4jconfig = "log4j.properties";
 			reader = new Xls_Reader(System.getProperty("user.dir")+ "\\src\\main\\java\\com\\legacyTeam\\testDataFile\\TestData.xlsx");
 			PropertyConfigurator.configure(log4jconfig);
-			start(prop.getProperty("browser"),  prop.getProperty("URL"));
+			
 			
 			
 		} 
@@ -150,9 +150,9 @@ public class TestBase {
 		final String elementLocatorKey=elementLocator;
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
 			       .withTimeout(30, TimeUnit.SECONDS)
-			       .pollingEvery(2, TimeUnit.SECONDS)
+			       .pollingEvery(1, TimeUnit.SECONDS)
 			       .ignoring(NoSuchElementException.class);
-			 
+		
 			   WebElement foo = wait.until(new Function<WebDriver, WebElement>() {
 			     public WebElement apply(WebDriver driver) {
 			       return getElement(elementLocatorKey);
@@ -171,6 +171,7 @@ public class TestBase {
 		else if(elementLocator.contains("_id")){
 			logger.log(Status.INFO, "Searching the Element with "+elementLocator);
 			element=driver.findElement(By.id(prop.getProperty(elementLocator)));
+			System.out.println(element +"found");
 			return element;
 		}
 		else if(elementLocator.contains("_css")){

@@ -3,16 +3,19 @@ package com.legacyTeam.dashboard;
 import java.util.List;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.log4testng.Logger;
 
+import com.aventstack.extentreports.ExtentTest;
 import com.legacyTeam.TestBase.TestBase;
+import com.legacyTeam.loginPage.loginPage;
 
 public class ToDoListFunctions extends TestBase {
 
+	
 	final String DashboardWaiting_xpath="//*[@id='divDaily']//*[local-name()='svg'][1]/*[local-name()='g'][1]/*[name()='path'][1]";
 	
 	@FindBy(xpath =DashboardWaiting_xpath)
@@ -55,6 +58,7 @@ public class ToDoListFunctions extends TestBase {
 	
 	public ToDoListFunctions(WebDriver driver){
 		PageFactory.initElements(driver,this);
+		//logger=this.logger;
 		
 	}
 	
@@ -63,6 +67,7 @@ public class ToDoListFunctions extends TestBase {
 		boolean onDashboard =dashboardWaitingElement.isDisplayed();
 		if(onDashboard == true){
 				do{
+					logger.info("Scrolling to the To Do List section");
 			      scroll(320);
 				}while(!todolistobject.isDisplayed());
 			
@@ -72,6 +77,7 @@ public class ToDoListFunctions extends TestBase {
 		else {
 			scroll(0);
 			NavigateTo nv=new NavigateTo();
+			logger.info("Not On the Dashboard tab ,Navigating to the Dashboard Tab");
 			nv.Navigateto("Dashboard", "Employee", "");
 			scrollToDoList();
 		}
@@ -83,15 +89,18 @@ public class ToDoListFunctions extends TestBase {
 	
 	public void addlist(String month,int date,Integer year,String TextDetails){
 		if(scrollToDoList()==true){
+			logger.pass("On the To Do List section of XAP");
 			addbtn.click();
 			textArea.clear();
 			textArea.sendKeys(TextDetails);
+			logger.info("Enter the text for to do list");
 			displayCalender.click();
-				
+			logger.info("Selecting Date from the calender");	
 			selectMonth(month,year);
 			waitinSec(1);
 			selectDate(date);
 			saveChangesbtn.click();
+			logger.info("Clicked on the Save Changes button");
 			
 		}else
 			scrollToDoList();
@@ -103,7 +112,7 @@ public class ToDoListFunctions extends TestBase {
 	public void selectMonth(String Month,Integer expectedYear){
 		String monthText=monthyearText.getText();
 		int lengthoftext=monthText.length();
-		
+		logger.info("Selecting the month to add to do list for");
 		String getmonth=monthText.substring(0, lengthoftext-5);
 		String getYear=monthText.substring(lengthoftext-4);
 		getYear=getYear.replace(" ", "");
@@ -114,8 +123,6 @@ public class ToDoListFunctions extends TestBase {
 		}
 		else
 		{	
-			//Validating The Year Entered and Expected
-			
 			while(!expectedYear.equals(ActualYear)){
 				if(expectedYear>ActualYear){
 					while(!ActualYear.equals(expectedYear)){
@@ -145,7 +152,7 @@ public class ToDoListFunctions extends TestBase {
 	public void selectDate(int date){
 		
 		 int calendar_tr=driver.findElements(By.xpath("//div[@class='datepicker-days' ]//tbody/tr")).size();
-		
+		 logger.info("Selecting the month date to add to do list for");
 		 for(int j=1;j<=calendar_tr;j++){
 			 String xpath1="//div[@class='datepicker-days' ]//tr["+j+"]/td[@class='day']";
 			 int calendar_trtd=driver.findElements(By.xpath(xpath1)).size();
@@ -165,9 +172,14 @@ public class ToDoListFunctions extends TestBase {
 	}
 	
 	public void selectTab(String tabtobeSelected){
-		List<WebElement> todotabs=driver.findElements(By.xpath("id('todotab'/li"));
-		for(int i=1;i<=todotabs.size();i++){
+		fluentWait("wait_id");
+		List<WebElement> todotabs=driver.findElements(By.xpath("id('todotab')/li"));
+		logger.info("Selecting the :" + tabtobeSelected);
+		waitinSec(2);
+		for(int i=0;i<=todotabs.size();i++){
+			
 			String tab=todotabs.get(i).getText();
+			System.out.println(tab);
 			if(tabtobeSelected.equalsIgnoreCase(tab)){
 				todotabs.get(i).click();
 				return;
@@ -177,8 +189,9 @@ public class ToDoListFunctions extends TestBase {
 	}
 	
 	
-	public boolean VerifyToDoList(String todolisttext,String tab){
+	public boolean VerifyToDoList(String todolisttext){
 		List<WebElement> itemsOnTab=driver.findElements(By.xpath("id('divToDo')//li"));
+		logger.info("Verifing the entered to list");
 		for(int i=1;i<=itemsOnTab.size();i++){
 			String xpath1="id('divToDo')//li["+i+"]//div[@class='task-title']/span";
 			String actualtext=driver.findElement(By.xpath(xpath1)).getText();
